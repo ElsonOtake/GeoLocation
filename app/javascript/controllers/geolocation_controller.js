@@ -19,6 +19,7 @@ export default class extends Controller {
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
+    location.assign(`/locations?place=${crd.latitude},${crd.longitude}`)
   }
   
   error(err) {
