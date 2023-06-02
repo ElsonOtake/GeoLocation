@@ -2,6 +2,24 @@
 
 <h1>Locations</h1>
 
+<%= js_map [
+  {
+    latitude: 37.7829,
+    longitude: -122.4190,
+    label: "Hot chicken takeover",
+    tooltip: "5 stars",
+    color: "#f84d4d"
+  }
+],
+  id: "cities-map",
+  width: "800px",
+  height: "500px",
+  markers: {color: "#f84d4d"},
+  tooltips: {hover: false, html: true},
+  style: "mapbox://styles/mapbox/outdoors-v12",
+  zoom: 15,
+  controls: true %>
+
 <%= form_with url: locations_path, method: :get do |form| %>
   <%= form.text_field :place, value: params[:place] %>
   <%= form.select :distance, [10, 100] %>
