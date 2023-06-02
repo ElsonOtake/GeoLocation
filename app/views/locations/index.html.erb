@@ -2,7 +2,7 @@
 
 <h1>Locations</h1>
 
-<%= js_map [
+<%#= js_map [
   {
     latitude: 37.7829,
     longitude: -122.4190,
@@ -29,6 +29,19 @@
 <div id="locations">
   <% @locations.each do |location| %>
     <%= render location %>
+    <%= js_map [
+      {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        label: location.name,
+        tooltip: location.address
+      }
+    ],
+      width: "800px",
+      height: "500px",
+      tooltips: {hover: false, html: true},
+      zoom: 15,
+      controls: true %>
     <p>
       <%= link_to "Show this location", location %>
     </p>
