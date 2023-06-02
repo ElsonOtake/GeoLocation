@@ -20,6 +20,13 @@
   zoom: 15,
   controls: true %>
 
+<%= js_map locations_path(format: :json),
+  width: "800px",
+  height: "500px",
+  tooltips: {hover: false, html: true},
+  zoom: 15,
+  controls: true %>
+
 <%= form_with url: locations_path, method: :get do |form| %>
   <%= form.text_field :place, value: params[:place] %>
   <%= form.select :distance, [10, 100] %>
@@ -29,7 +36,7 @@
 <div id="locations">
   <% @locations.each do |location| %>
     <%= render location %>
-    <%= js_map [
+    <%#= js_map [
       {
         latitude: location.latitude,
         longitude: location.longitude,
