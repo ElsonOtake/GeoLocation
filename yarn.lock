@@ -251,6 +251,11 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
+mapkick@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/mapkick/-/mapkick-0.2.5.tgz#c9a5c1cd5320d6fceb6d01b63831915663ee79bd"
+  integrity sha512-Ucj+RQ4IIzbUosrZ0GHMtDqVOsgR5se2e7y0rQ3UADpNqAv6Tz7aO6d0mX+S/hS6afBtNBXlcQP7bU8qDNhunQ==
+
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
