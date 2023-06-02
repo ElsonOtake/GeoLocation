@@ -20,16 +20,15 @@
   zoom: 15,
   controls: true %>
 
-<%= js_map locations_path(format: :json),
+<%= js_map locations_path(format: :json, place: params[:place], distance: params[:distance]),
   width: "800px",
   height: "500px",
   tooltips: {hover: false, html: true},
-  zoom: 15,
   controls: true %>
 
 <%= form_with url: locations_path, method: :get do |form| %>
   <%= form.text_field :place, value: params[:place] %>
-  <%= form.select :distance, [10, 100] %>
+  <%= form.select :distance, [10, 100], selected: params[:distance] %>
   <%= form.submit %>
 <% end %>
 
