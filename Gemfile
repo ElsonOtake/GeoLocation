@@ -77,3 +77,5 @@ end
 
 gem "geocoder", "~> 1.8"
 gem "mapkick-rb"
+gem 'google-api-client', require: 'google/apis'
+gem 'google_maps_service'
