@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'custom', to: 'google_maps#custom'
   get 'literal', to: 'google_maps#literal'
   get 'simple_click', to: 'google_maps#simple_click'
+  get 'properties', to: 'google_maps#properties'
   # Defines the root path route ("/")
   root "locations#index"
 end
