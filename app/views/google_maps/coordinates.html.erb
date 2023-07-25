@@ -1,25 +1,2 @@
 <h1 class="title">Find Location Coordinates</h1>
 <div id="map" style="height: 500px;" data-controller="geolocation" data-geolocation-page-value="coordinates"></div>
-
-<%# <script>
-  // Initialize the map
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 0, lng: 0 },
-      zoom: 3 // Adjust the zoom level as needed
-    });
-
-    // Add a click event listener to get the coordinates on click
-    map.addListener('click', function(event) {
-      var latitude = event.latLng.lat();
-      var longitude = event.latLng.lng();
-
-      // Do something with the latitude and longitude, e.g., display them in an alert
-      alert('Latitude: ' + latitude + ', Longitude: ' + longitude);
-    });
-  }
-</script> %>
-
-<%# <script src="https://maps.googleapis.com/maps/api/js?key= %>
-<%#= ENV['GOOGLE_ID'] %>
-<%# &callback=initMap" async defer></script> %>

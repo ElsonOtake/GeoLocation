@@ -89,6 +89,9 @@ export default class extends Controller {
       case "literal":
         this.literal();
         break;
+      case "simple_click":
+        this.simple_click();
+        break;
       default:
         console.log("page not found!");
     }
@@ -388,6 +391,31 @@ export default class extends Controller {
 
     google.maps.event.addListener(marker, "click", () => {
       infowindow.open(map, marker);
+    });
+  }
+
+  simple_click() {
+    const myLatlng = { lat: 10.657, lng: -61.518 },
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 10,
+      center: myLatlng,
+    });
+    const marker = new google.maps.Marker({
+      position: myLatlng,
+      map,
+      title: "Click to zoom",
+    });
+  
+    map.addListener("center_changed", () => {
+      // 3 seconds after the center of the map has changed, pan back to the
+      // marker.
+      window.setTimeout(() => {
+        map.panTo(marker.getPosition());
+      }, 3000);
+    });
+    marker.addListener("click", () => {
+      map.setZoom(12);
+      map.setCenter(marker.getPosition());
     });
   }
 }
