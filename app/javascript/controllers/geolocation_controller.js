@@ -24,6 +24,9 @@ export default class extends Controller {
       case "geolocation":
         this.geolocation();
         break;
+      case "localizing":
+        this.localizing();
+        break;
       default:
         console.log("page not found!");
     }
@@ -107,7 +110,7 @@ export default class extends Controller {
 
   geolocation() {
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
+      center: { lat: 10.657, lng: -61.518 },
       zoom: 6,
     });
     infoWindow = new google.maps.InfoWindow();
@@ -151,5 +154,17 @@ export default class extends Controller {
         : "Error: Your browser doesn't support geolocation.",
     );
     infoWindow.open(map);
+  }
+
+  // This example displays a map with the language and region set
+  // to Japan. These settings are specified in the HTML script element
+  // when loading the Google Maps JavaScript API.
+  // Setting the language shows the map in the language of your choice.
+  // Setting the region biases the geocoding results to that region.
+  localizing() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 8,
+      center: { lat: 35.717, lng: 139.731 },
+    });
   }
 }

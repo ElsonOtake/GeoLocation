@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'simple_map', to: 'google_maps#simple_map'
   get 'pixel_tile', to: 'google_maps#pixel_tile'
   get 'geolocation', to: 'google_maps#geolocation'
+  get 'localizing', to: 'google_maps#localizing'
   # Defines the root path route ("/")
   root "locations#index"
 end

@@ -6,4 +6,6 @@ class GoogleMapsController < ApplicationController
   def pixel_tile;end
 
   def geolocation;end
+
+  def localizing;end
 end
