@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'geolocation', to: 'google_maps#geolocation'
   get 'localizing', to: 'google_maps#localizing'
   get 'right_to_left', to: 'google_maps#right_to_left'
+  get 'custom', to: 'google_maps#custom'
   # Defines the root path route ("/")
   root "locations#index"
 end
