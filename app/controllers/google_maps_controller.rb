@@ -4,4 +4,6 @@ class GoogleMapsController < ApplicationController
   def simple_map;end
 
   def pixel_tile;end
+
+  def geolocation;end
 end
