@@ -8,4 +8,6 @@ class GoogleMapsController < ApplicationController
   def geolocation;end
 
   def localizing;end
+
+  def right_to_left;end
 end
