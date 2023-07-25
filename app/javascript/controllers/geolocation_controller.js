@@ -61,9 +61,12 @@ export default class extends Controller {
   static values = { page: String }
 
   connect() {
+    loader.load().then(async () => {
+      const { Map } = await google.maps.importLibrary("maps");
+    });
     switch(this.pageValue) {
-      case "api_loader":
-        this.api_loader();
+      case "coordinates":
+        this.coordinates();
         break;
       case "simple_map":
         this.simple_map();
@@ -106,6 +109,22 @@ export default class extends Controller {
   
   error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  coordinates() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 0, lng: 0 },
+      zoom: 3 // Adjust the zoom level as needed
+    });
+
+    // Add a click event listener to get the coordinates on click
+    map.addListener('click', function(event) {
+      let latitude = event.latLng.lat();
+      let longitude = event.latLng.lng();
+
+      // Do something with the latitude and longitude, e.g., display them in an alert
+      alert('Latitude: ' + latitude + ', Longitude: ' + longitude);
+    });
   }
 
   simple_map() {
@@ -371,16 +390,4 @@ export default class extends Controller {
       infowindow.open(map, marker);
     });
   }
-  
-  api_loader() {
-    loader.load().then(async () => {
-      const { Map } = await google.maps.importLibrary("maps");
-    
-      map = new Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      });
-    });
-  }
-
 }
