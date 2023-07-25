@@ -69,9 +69,6 @@ export default class extends Controller {
   static values = { page: String }
 
   connect() {
-    loader.load().then(async () => {
-      const { Map } = await google.maps.importLibrary("maps");
-    });
     switch(this.pageValue) {
       case "coordinates":
         this.coordinates();
@@ -132,42 +129,48 @@ export default class extends Controller {
   }
 
   coordinates() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 0, lng: 0 },
-      zoom: 3 // Adjust the zoom level as needed
-    });
-
-    // Add a click event listener to get the coordinates on click
-    map.addListener('click', function(event) {
-      let latitude = event.latLng.lat();
-      let longitude = event.latLng.lng();
-
-      // Do something with the latitude and longitude, e.g., display them in an alert
-      alert('Latitude: ' + latitude + ', Longitude: ' + longitude);
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 0, lng: 0 },
+        zoom: 3 // Adjust the zoom level as needed
+      });
+      
+      // Add a click event listener to get the coordinates on click
+      map.addListener('click', function(event) {
+        let latitude = event.latLng.lat();
+        let longitude = event.latLng.lng();
+        
+        // Do something with the latitude and longitude, e.g., display them in an alert
+        alert('Latitude: ' + latitude + ', Longitude: ' + longitude);
+      });
     });
   }
 
   simple_map() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 10.657, lng: -61.518 },
-      zoom: 9,
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 10.657, lng: -61.518 },
+        zoom: 9,
+      });
     });
   }
 
   pixel_tile() {
     const port_of_spain = new google.maps.LatLng(10.66, -61.52);
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: port_of_spain,
-      zoom: 3,
-    });
-    const coordInfoWindow = new google.maps.InfoWindow();
-  
-    coordInfoWindow.setContent(this.createInfoWindowContent(port_of_spain, map.getZoom()));
-    coordInfoWindow.setPosition(port_of_spain);
-    coordInfoWindow.open(map);
-    map.addListener("zoom_changed", () => {
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: port_of_spain,
+        zoom: 3,
+      });
+      const coordInfoWindow = new google.maps.InfoWindow();
+    
       coordInfoWindow.setContent(this.createInfoWindowContent(port_of_spain, map.getZoom()));
+      coordInfoWindow.setPosition(port_of_spain);
       coordInfoWindow.open(map);
+      map.addListener("zoom_changed", () => {
+        coordInfoWindow.setContent(this.createInfoWindowContent(port_of_spain, map.getZoom()));
+        coordInfoWindow.open(map);
+      });
     });
   }
 
@@ -207,40 +210,42 @@ export default class extends Controller {
   }
 
   geolocation() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 10.657, lng: -61.518 },
-      zoom: 6,
-    });
-    infoWindow = new google.maps.InfoWindow();
-  
-    const locationButton = document.createElement("button");
-  
-    locationButton.textContent = "Pan to Current Location";
-    locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-    locationButton.addEventListener("click", () => {
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-  
-            infoWindow.setPosition(pos);
-            infoWindow.setContent("Location found.");
-            infoWindow.open(map);
-            map.setCenter(pos);
-          },
-          () => {
-            this.handleLocationError(true, infoWindow, map.getCenter());
-          },
-        );
-      } else {
-        // Browser doesn't support Geolocation
-        this.handleLocationError(false, infoWindow, map.getCenter());
-      }
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 10.657, lng: -61.518 },
+        zoom: 6,
+      });
+      infoWindow = new google.maps.InfoWindow();
+    
+      const locationButton = document.createElement("button");
+    
+      locationButton.textContent = "Pan to Current Location";
+      locationButton.classList.add("custom-map-control-button");
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+      locationButton.addEventListener("click", () => {
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+    
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("Location found.");
+              infoWindow.open(map);
+              map.setCenter(pos);
+            },
+            () => {
+              this.handleLocationError(true, infoWindow, map.getCenter());
+            },
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          this.handleLocationError(false, infoWindow, map.getCenter());
+        }
+      });
     });
   }
   
@@ -260,9 +265,11 @@ export default class extends Controller {
   // Setting the language shows the map in the language of your choice.
   // Setting the region biases the geocoding results to that region.
   localizing() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 8,
-      center: { lat: 35.717, lng: 139.731 },
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: { lat: 35.717, lng: 139.731 },
+      });
     });
   }
 
@@ -275,19 +282,21 @@ export default class extends Controller {
   // right-to-left.
   right_to_left() {
     const cairo = { lat: 30.064742, lng: 31.249509 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      scaleControl: true,
-      center: cairo,
-      zoom: 10,
-    });
-    const infowindow = new google.maps.InfoWindow();
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        scaleControl: true,
+        center: cairo,
+        zoom: 10,
+      });
+      const infowindow = new google.maps.InfoWindow();
 
-    infowindow.setContent("<b>القاهرة</b>");
+      infowindow.setContent("<b>القاهرة</b>");
 
-    const marker = new google.maps.Marker({ map, position: cairo });
+      const marker = new google.maps.Marker({ map, position: cairo });
 
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
     });
   }
 
@@ -296,36 +305,38 @@ export default class extends Controller {
   // https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection
   custom() {
     // Create a map. Use the Gall-Peters map type.
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 0,
-      center: { lat: 0, lng: 0 },
-      mapTypeControl: false,
-    });
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 0,
+        center: { lat: 0, lng: 0 },
+        mapTypeControl: false,
+      });
 
-    this.initGallPeters();
-    map.mapTypes.set("gallPeters", gallPetersMapType);
-    map.setMapTypeId("gallPeters");
+      this.initGallPeters();
+      map.mapTypes.set("gallPeters", gallPetersMapType);
+      map.setMapTypeId("gallPeters");
 
-    // Show the lat and lng under the mouse cursor.
-    const coordsDiv = document.getElementById("coords");
+      // Show the lat and lng under the mouse cursor.
+      const coordsDiv = document.getElementById("coords");
 
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(coordsDiv);
-    map.addListener("mousemove", (event) => {
-      coordsDiv.textContent =
-        "lat: " +
-        Math.round(event.latLng.lat()) +
-        ", " +
-        "lng: " +
-        Math.round(event.latLng.lng());
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(coordsDiv);
+      map.addListener("mousemove", (event) => {
+        coordsDiv.textContent =
+          "lat: " +
+          Math.round(event.latLng.lat()) +
+          ", " +
+          "lng: " +
+          Math.round(event.latLng.lng());
+      });
+      // Add some markers to the map.
+      map.data.setStyle((feature) => {
+        return {
+          title: feature.getProperty("name"),
+          optimized: false,
+        };
+      });
+      map.data.addGeoJson(cities);
     });
-    // Add some markers to the map.
-    map.data.setStyle((feature) => {
-      return {
-        title: feature.getProperty("name"),
-        optimized: false,
-      };
-    });
-    map.data.addGeoJson(cities);
   }
 
   initGallPeters() {
@@ -388,107 +399,116 @@ export default class extends Controller {
       zoom: 8,
       center: { lat: -34.397, lng: 150.644 },
     };
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      const marker = new google.maps.Marker({
+        // The below line is equivalent to writing:
+        // position: new google.maps.LatLng(-34.397, 150.644)
+        position: { lat: -34.397, lng: 150.644 },
+        map: map,
+      });
+      // You can use a LatLng literal in place of a google.maps.LatLng object when
+      // creating the Marker object. Once the Marker object is instantiated, its
+      // position will be available as a google.maps.LatLng object. In this case,
+      // we retrieve the marker's position using the
+      // google.maps.LatLng.getPosition() method.
+      const infowindow = new google.maps.InfoWindow({
+        content: "<p>Marker Location:" + marker.getPosition() + "</p>",
+      });
 
-    const marker = new google.maps.Marker({
-      // The below line is equivalent to writing:
-      // position: new google.maps.LatLng(-34.397, 150.644)
-      position: { lat: -34.397, lng: 150.644 },
-      map: map,
-    });
-    // You can use a LatLng literal in place of a google.maps.LatLng object when
-    // creating the Marker object. Once the Marker object is instantiated, its
-    // position will be available as a google.maps.LatLng object. In this case,
-    // we retrieve the marker's position using the
-    // google.maps.LatLng.getPosition() method.
-    const infowindow = new google.maps.InfoWindow({
-      content: "<p>Marker Location:" + marker.getPosition() + "</p>",
-    });
-
-    google.maps.event.addListener(marker, "click", () => {
-      infowindow.open(map, marker);
+      google.maps.event.addListener(marker, "click", () => {
+        infowindow.open(map, marker);
+      });
     });
   }
 
   simple_click() {
-    const myLatlng = { lat: 10.657, lng: -61.518 },
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 10,
-      center: myLatlng,
-    });
-    const marker = new google.maps.Marker({
-      position: myLatlng,
-      map,
-      title: "Click to zoom",
-    });
-  
-    map.addListener("center_changed", () => {
-      // 3 seconds after the center of the map has changed, pan back to the
-      // marker.
-      window.setTimeout(() => {
-        map.panTo(marker.getPosition());
-      }, 3000);
-    });
-    marker.addListener("click", () => {
-      map.setZoom(12);
-      map.setCenter(marker.getPosition());
+    const myLatlng = { lat: 10.657, lng: -61.518 };
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: myLatlng,
+      });
+      const marker = new google.maps.Marker({
+        position: myLatlng,
+        map,
+        title: "Click to zoom",
+      });
+    
+      map.addListener("center_changed", () => {
+        // 3 seconds after the center of the map has changed, pan back to the
+        // marker.
+        window.setTimeout(() => {
+          map.panTo(marker.getPosition());
+        }, 3000);
+      });
+      marker.addListener("click", () => {
+        map.setZoom(12);
+        map.setCenter(marker.getPosition());
+      });
     });
   }
 
   properties() {
     const originalMapCenter = new google.maps.LatLng(10.657267, -61.518017);
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: originalMapCenter,
-    });
-    const infowindow = new google.maps.InfoWindow({
-      content: "Change the zoom level",
-      position: originalMapCenter,
-    });
-  
-    infowindow.open(map);
-    map.addListener("zoom_changed", () => {
-      infowindow.setContent("Zoom: " + map.getZoom());
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: originalMapCenter,
+      });
+      const infowindow = new google.maps.InfoWindow({
+        content: "Change the zoom level",
+        position: originalMapCenter,
+      });
+    
+      infowindow.open(map);
+      map.addListener("zoom_changed", () => {
+        infowindow.setContent("Zoom: " + map.getZoom());
+      });
     });
   }
 
   lat_lng() {
     const myLatlng = { lat: 10.657, lng: -61.518 };
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 10,
-      center: myLatlng,
-    });
-    // Create the initial InfoWindow.
-    let infoWindow = new google.maps.InfoWindow({
-      content: "Click the map to get Lat/Lng!",
-      position: myLatlng,
-    });
-  
-    infoWindow.open(map);
-    // Configure the click listener.
-    map.addListener("click", (mapsMouseEvent) => {
-      // Close the current InfoWindow.
-      infoWindow.close();
-      // Create a new InfoWindow.
-      infoWindow = new google.maps.InfoWindow({
-        position: mapsMouseEvent.latLng,
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: myLatlng,
       });
-      infoWindow.setContent(
-        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
-      );
+      // Create the initial InfoWindow.
+      let infoWindow = new google.maps.InfoWindow({
+        content: "Click the map to get Lat/Lng!",
+        position: myLatlng,
+      });
+    
       infoWindow.open(map);
+      // Configure the click listener.
+      map.addListener("click", (mapsMouseEvent) => {
+        // Close the current InfoWindow.
+        infoWindow.close();
+        // Create a new InfoWindow.
+        infoWindow = new google.maps.InfoWindow({
+          position: mapsMouseEvent.latLng,
+        });
+        infoWindow.setContent(
+          JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
+        );
+        infoWindow.open(map);
+      });
     });
   }
 
   bounds() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: AUCKLAND,
-      restriction: {
-        latLngBounds: NEW_ZEALAND_BOUNDS,
-        strictBounds: false,
-      },
-      zoom: 7,
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: AUCKLAND,
+        restriction: {
+          latLngBounds: NEW_ZEALAND_BOUNDS,
+          strictBounds: false,
+        },
+        zoom: 7,
+      });
     });
   }
 }
