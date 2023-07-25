@@ -1,7 +1,10 @@
-<h1>Find Location Coordinates</h1>
-<div id="map" style="height: 500px;"></div>
+<h1 class="title">Loader</h1>
+<div id="map" style="height: 500px;" data-controller="geolocation" data-geolocation-page-value="api_loader"></div>
 
-<script>
+<%# <h1>Find Location Coordinates</h1>
+<div id="map" style="height: 500px;"></div> %>
+
+<%# <script>
   // Initialize the map
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -18,6 +21,8 @@
       alert('Latitude: ' + latitude + ', Longitude: ' + longitude);
     });
   }
-</script>
+</script> %>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_ID'] %>&callback=initMap" async defer></script>
+<%# <script src="https://maps.googleapis.com/maps/api/js?key= %>
+<%#= ENV['GOOGLE_ID'] %>
+<%# &callback=initMap" async defer></script> %>

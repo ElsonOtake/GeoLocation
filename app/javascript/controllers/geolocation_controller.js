@@ -1,5 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
+import { Loader } from "@googlemaps/js-api-loader"
     
+const loader = new Loader({
+  apiKey: "AIzaSyCogs-bYhrrFSdokVSKDDqshN1dQigg-VY",
+  version: "weekly",
+});
+
 let map, infoWindow, gallPetersMapType;
 const TILE_SIZE = 256;
 
@@ -56,6 +62,9 @@ export default class extends Controller {
 
   connect() {
     switch(this.pageValue) {
+      case "api_loader":
+        this.api_loader();
+        break;
       case "simple_map":
         this.simple_map();
         break;
@@ -362,4 +371,16 @@ export default class extends Controller {
       infowindow.open(map, marker);
     });
   }
+  
+  api_loader() {
+    loader.load().then(async () => {
+      const { Map } = await google.maps.importLibrary("maps");
+    
+      map = new Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+    });
+  }
+
 }
