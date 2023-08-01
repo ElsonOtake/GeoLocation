@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'lat_lng', to: 'google_maps#lat_lng'
   get 'bounds', to: 'google_maps#bounds'
   get 'advanced_marker', to: 'google_maps#advanced_marker'
+  get 'centered_marker', to: 'google_maps#centered_marker'
   # Defines the root path route ("/")
   root "locations#index"
 end

@@ -103,10 +103,14 @@ export default class extends Controller {
       case "advanced_marker":
         this.advanced_marker();
         break;
+      case "centered_marker":
+        this.centered_marker();
+        break;
       default:
         console.log("page not found!");
     }
   }
+
   search() {
     navigator.geolocation.getCurrentPosition(this.success, this.error, options);
   }
@@ -499,38 +503,28 @@ export default class extends Controller {
   }
 
   advanced_marker = async () => {
-  //   const position = { lat: 10.657, lng: -61.518 };
-  //   const { Map } = await google.maps.importLibrary("maps");
-  //   const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
-  //   map = new Map(document.getElementById("map"), {
-  //     center: position,
-  //     zoom: 14,
-  //     mapId: "4504f8b37365c3d0",
-  //   });
-  //   marker = new AdvancedMarkerView({
-  //     map: map,
-  //     position: position,
-  //     title: "Port of Spain",
-  //   });
-  // }
-  const position = { lat: -25.344, lng: 131.031 };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const position = { lat: 10.657, lng: -61.518 };
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    map = new Map(document.getElementById("map"), {
+      center: position,
+      zoom: 14,
+      mapId: "4504f8b37365c3d0",
+    });
+    marker = new AdvancedMarkerElement({
+      map: map,
+      position: position,
+      title: "Port of Spain",
+    });
+  }
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 14,
-    center: position,
-    mapId: "DEMO_MAP_ID",
-  });
-
-  // The marker, positioned at Uluru
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    title: "Uluru",
-  });
-}
+  centered_marker = async () => {
+    const position = { lat: 10.657, lng: -61.518 };
+    const { Map } = await google.maps.importLibrary("maps");
+    map = new Map(document.getElementById("map"), {
+      center: position,
+      zoom: 14,
+      mapId: "4504f8b37365c3d0",
+    });
+  }
 }
