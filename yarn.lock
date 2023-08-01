@@ -14,6 +14,14 @@
   dependencies:
     "fast-deep-equal" "^3.1.3"
 
+"@googlemaps/markerclusterer@^2.4.0":
+  "integrity" "sha512-yjHrqaaYMzclbPERoCP/6r2w+wJfTCW/+Wblr7eJ4dyQcRFeOxZ8bsdoqvsyj1UbgNt91ly2aiww8h0uDOD6zw=="
+  "resolved" "https://registry.npmjs.org/@googlemaps/markerclusterer/-/markerclusterer-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "fast-deep-equal" "^3.1.3"
+    "supercluster" "^8.0.1"
+
 "@hotwired/stimulus@^3.2.1":
   "integrity" "sha512-HGlzDcf9vv/EQrMJ5ZG6VWNs8Z/xMN+1o2OhV1gKiSG6CqZt5MCBB1gRg5ILiN3U0jEAxuDTNPRfBcnZBDmupQ=="
   "resolved" "https://registry.npmjs.org/@hotwired/stimulus/-/stimulus-3.2.1.tgz"
@@ -158,6 +166,11 @@
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
 
+"kdbush@^4.0.2":
+  "integrity" "sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA=="
+  "resolved" "https://registry.npmjs.org/kdbush/-/kdbush-4.0.2.tgz"
+  "version" "4.0.2"
+
 "mapkick@^0.2.5":
   "integrity" "sha512-Ucj+RQ4IIzbUosrZ0GHMtDqVOsgR5se2e7y0rQ3UADpNqAv6Tz7aO6d0mX+S/hS6afBtNBXlcQP7bU8qDNhunQ=="
   "resolved" "https://registry.npmjs.org/mapkick/-/mapkick-0.2.5.tgz"
@@ -193,6 +206,13 @@
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   "version" "1.0.2"
+
+"supercluster@^8.0.1":
+  "integrity" "sha512-IiOea5kJ9iqzD2t7QJq/cREyLHTtSmUT6gQsweojg9WH2sYJqZK9SswTu6jrscO6D1G5v5vYZ9ru/eq85lXeZQ=="
+  "resolved" "https://registry.npmjs.org/supercluster/-/supercluster-8.0.1.tgz"
+  "version" "8.0.1"
+  dependencies:
+    "kdbush" "^4.0.2"
 
 "to-regex-range@^5.0.1":
   "integrity" "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ=="
