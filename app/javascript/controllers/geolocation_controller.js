@@ -85,6 +85,25 @@ const locations = [
   { lat: -43.999792, lng: 170.463352 },
 ];
 
+const citymap = {
+  chicago: {
+    center: { lat: 41.878, lng: -87.629 },
+    population: 2714856,
+  },
+  newyork: {
+    center: { lat: 40.714, lng: -74.005 },
+    population: 8405837,
+  },
+  losangeles: {
+    center: { lat: 34.052, lng: -118.243 },
+    population: 3857799,
+  },
+  vancouver: {
+    center: { lat: 49.25, lng: -123.1 },
+    population: 603502,
+  },
+};
+
 // Connects to data-controller="geolocation"
 export default class extends Controller {
   static values = { page: String }
@@ -135,6 +154,9 @@ export default class extends Controller {
         break;
       case "cluster_markers":
         this.cluster_markers();
+        break;
+      case "circles":
+        this.circles();
         break;
       default:
         console.log("page not found!");
@@ -590,5 +612,30 @@ export default class extends Controller {
   
     // Add a marker clusterer to manage the markers.
     new MarkerClusterer({ markers, map });
+  }
+
+  circles = async () => {
+    const { Map } = await google.maps.importLibrary("maps");
+    map = new Map(document.getElementById("map"), {
+      zoom: 4,
+      center: { lat: 37.09, lng: -95.712 },
+      mapTypeId: "terrain",
+    });
+  
+    // Construct the circle for each value in citymap.
+    // Note: We scale the area of the circle based on the population.
+    for (const city in citymap) {
+      // Add the circle for this city to the map.
+      const cityCircle = new google.maps.Circle({
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+        map,
+        center: citymap[city].center,
+        radius: Math.sqrt(citymap[city].population) * 100,
+      });
+    }
   }
 }
