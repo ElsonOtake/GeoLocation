@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get 'advanced_marker', to: 'google_maps#advanced_marker'
   get 'centered_marker', to: 'google_maps#centered_marker'
   get 'cluster_markers', to: 'google_maps#cluster_markers'
-  get 'simple_html_marker', to: 'google_maps#simple_html_marker'
+  get 'html_marker', to: 'google_maps#html_marker'
+  get 'customize_advanced_marker', to: 'google_maps#customize_advanced_marker'
   get 'circles', to: 'google_maps#circles'
   get 'info_windows', to: 'google_maps#info_windows'
   # Defines the root path route ("/")
