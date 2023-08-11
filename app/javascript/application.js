@@ -29,4 +29,4 @@ import "./controllers"
       m.head.append(a)
     }));
     d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-      ({key: "AIzaSyCogs-bYhrrFSdokVSKDDqshN1dQigg-VY", v: "weekly"});
+      ({key: "AIzaSyCogs-bYhrrFSdokVSKDDqshN1dQigg-VY", v: "beta"});
