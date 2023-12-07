@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import '../src/google_maps'
 
 let map, marker, infoWindow, gallPetersMapType;
 const TILE_SIZE = 256;
