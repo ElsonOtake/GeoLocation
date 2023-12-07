@@ -1,8 +1,6 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar px-6" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
+    <%= image_tag "EAO.png", class: "navbar-item", size: "112x28" %>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarGeoLocation">
       <span aria-hidden="true"></span>
@@ -14,13 +12,6 @@
   <div id="navbarGeoLocation" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to "Mapbox", locations_path, class: "navbar-item" %>
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
