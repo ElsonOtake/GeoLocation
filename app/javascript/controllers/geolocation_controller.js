@@ -238,6 +238,12 @@ const properties = [
   },
 ];
 
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
 // Connects to data-controller="geolocation"
 export default class extends Controller {
   static values = { page: String }
