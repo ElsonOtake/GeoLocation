@@ -7,13 +7,13 @@
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-4"><%= location.name %></p>
+        <p class="title is-4 has-text-danger"><%= location.name %></p>
         <p class="subtitle is-6"><%= location.address %></p>
       </div>
     </div>
 
-    <div class="content">
-      <%= location.latitude %> | <%= location.longitude %>
+    <div class="content is-size-7 has-text-success">
+      <%= number_with_precision location.latitude, precision: 4 %> | <%= number_with_precision location.longitude, precision: 4 %>
     </div>
   </div>
 </div>
