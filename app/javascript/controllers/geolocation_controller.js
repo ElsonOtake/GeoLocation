@@ -246,75 +246,91 @@ const options = {
 
 // Connects to data-controller="geolocation"
 export default class extends Controller {
+  static targets = [ "coordinates", "simpleMap", "pixelTile", "geolocation", "localizing", "rightToLeft", "custom", "literal",
+    "simpleClick", "properties", "latLng", "bounds", "htmlMarker", "advancedMarker", "centeredMarker", "clusterMarkers",
+    "circles", "infoWindows", "customizeAdvanced_marker", "interactiveMarker" ]
   static values = { page: String }
 
-  connect() {
-    switch(this.pageValue) {
-      case "coordinates":
-        this.coordinates();
-        break;
-      case "simple_map":
-        this.simple_map();
-        break;
-      case "pixel_tile":
-        this.pixel_tile();
-        break;
-      case "geolocation":
-        this.geolocation();
-        break;
-      case "localizing":
-        this.localizing();
-        break;
-      case "right_to_left":
-        this.right_to_left();
-        break;
-      case "custom":
-        this.custom();
-        break;
-      case "literal":
-        this.literal();
-        break;
-      case "simple_click":
-        this.simple_click();
-        break;
-      case "properties":
-        this.properties();
-        break;
-      case "lat_lng":
-        this.lat_lng();
-        break;
-      case "bounds":
-        this.bounds();
-        break;
-      case "html_marker":
-        this.html_marker();
-        break;
-      case "advanced_marker":
-        this.advanced_marker();
-        break;
-      case "centered_marker":
-        this.centered_marker();
-        break;
-      case "cluster_markers":
-        this.cluster_markers();
-        break;
-      case "circles":
-        this.circles();
-        break;
-      case "info_windows":
-        this.info_windows();
-        break;
-      case "customize_advanced_marker":
-        this.customize_advanced_marker();
-        break;
-      case "interactive_marker":
-        this.interactive_marker();
-        break;
-      default:
-        console.log("page not found!", this.pageValue);
-    }
+  coordinatesTargetConnected = () => {
+    this.coordinates();
   }
 
+  simpleMapTargetConnected = () => {
+    this.simple_map();
+  }
+
+  pixelTileTargetConnected = () => {
+    this.pixel_tile();
+  }
+
+  geolocationTargetConnected = () => {
+    this.geolocation();
+  }
+
+  localizingTargetConnected = () => {
+    this.localizing();
+  }
+
+  rightToLeftTargetConnected = () => {
+    this.right_to_left();
+  }
+
+  customTargetConnected = () => {
+    this.custom();
+  }
+
+  literalTargetConnected = () => {
+    this.literal();
+  }
+
+  simpleClickTargetConnected = () => {
+    this.simple_click();
+  }
+
+  propertiesTargetConnected = () => {
+    this.properties();
+  }
+
+  latLngTargetConnected = () => {
+    this.lat_lng();
+  }
+
+  boundsTargetConnected = () => {
+    this.bounds();
+  }
+
+  htmlMarkerTargetConnected = () => {
+    this.html_marker();
+  }
+
+  advancedMarkerTargetConnected = () => {
+    this.advanced_marker();
+  }
+
+  centeredMarkerTargetConnected = () => {
+    this.centered_marker();
+  }
+
+  clusterMarkersTargetConnected = () => {
+    this.cluster_markers();
+  }
+
+  circlesTargetConnected = () => {
+    this.circles();
+  }
+
+  infoWindowsTargetConnected = () => {
+    this.info_windows();
+  }
+
+  customizeAdvanced_markerTargetConnected = () => {
+    this.customize_advanced_marker();
+  }
+
+  interactiveMarkerTargetConnected = () => {
+    this.interactive_marker();
+  }
+  
   search() {
     navigator.geolocation.getCurrentPosition(this.success, this.error, options);
   }
