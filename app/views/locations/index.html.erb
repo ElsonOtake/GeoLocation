@@ -1,61 +1,33 @@
 <p style="color: green"><%= notice %></p>
 
-<div data-controller="geolocation">
-  <button data-action="geolocation#search">Search near me</button>
+<h1 class="title">Locations</h1>
+<div class="is-flex is-justify-content-space-between mb-5">
+  <div data-controller="geolocation">
+    <button class="button is-info" data-action="geolocation#search">Search near me</button>
+  </div>
+
+  <%= link_to "New location", new_location_path, class: "button is-primary" %>
 </div>
 
-<h1>Locations</h1>
-
-<%#= js_map [
-  {
-    latitude: 37.7829,
-    longitude: -122.4190,
-    label: "Hot chicken takeover",
-    tooltip: "5 stars",
-    color: "#f84d4d"
-  }
-],
-  id: "cities-map",
-  width: "800px",
-  height: "500px",
-  markers: {color: "#f84d4d"},
-  tooltips: {hover: false, html: true},
-  style: "mapbox://styles/mapbox/outdoors-v12",
-  zoom: 15,
-  controls: true %>
-
-<%= js_map locations_path(format: :json, place: params[:place], distance: params[:distance]),
-  width: "800px",
-  height: "500px",
-  tooltips: {hover: false, html: true},
-  controls: true %>
+<div class="box is-flex is-justify-content-center">
+  <%= js_map locations_path(format: :json, place: params[:place], distance: params[:distance]),
+    width: "800px",
+    height: "500px",
+    tooltips: {hover: false, html: true},
+    controls: true %>
+</div>
 
 <%= form_with url: locations_path, method: :get do |form| %>
-  <%= form.text_field :place, value: params[:place] %>
-  <%= form.select :distance, [10, 100], selected: params[:distance] %>
-  <%= form.submit %>
+  <div class="field-body">
+    <%= form.text_field :place, value: params[:place], class: "input field", placeholder: "Location" %>
+    <%= form.select :distance, [10, 100], selected: params[:distance], class: "select field" %>
+    <%= form.submit "Search", class: "button is-link ml-2" %>
+  </div>
 <% end %>
 
-<div id="locations">
+<div id="locations" class="columns mt-6 is-multiline is-centered">
   <% @locations.each do |location| %>
     <%= render location %>
-    <%#= js_map [
-      {
-        latitude: location.latitude,
-        longitude: location.longitude,
-        label: location.name,
-        tooltip: html_link_to(location)
-      }
-    ],
-      width: "800px",
-      height: "500px",
-      tooltips: {hover: false, html: true},
-      zoom: 15,
-      controls: true %>
-    <p>
-      <%= link_to "Show this location", location %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New location", new_location_path %>
