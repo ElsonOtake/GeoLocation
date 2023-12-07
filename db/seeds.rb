@@ -40,3 +40,11 @@ Location.create(name:, address:)
 name = "Christ The Redeemer"
 address = "Estrada do Corcovado, Santa Teresa, Rio de Janeiro, Brazil"
 Location.create(name:, address:)
+
+name = "Guarujá beach"
+address = "Guarujá, Santos, Baixada Santista, São Paulo, Brazil"
+Location.create(name:, address:)
+
+name = "Santos Aquarium"
+address = "Avenida Bartholomeu de Gusmão, s/n, Ponta da Praia, Santos, São Paulo, Brazil"
+Location.create(name:, address:)
