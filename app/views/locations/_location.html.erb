@@ -1,24 +1,19 @@
-<div id="<%= dom_id location %>">
+<div class="card column is-one-third mb-4 mx-2" id="<%= dom_id location %>">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(#{location.longitude},#{location.latitude})/#{location.longitude},#{location.latitude},13,0/300x200?access_token=#{ENV['MAPBOX_ACCESS_TOKEN']}" %>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4 has-text-danger"><%= location.name %></p>
+        <p class="subtitle is-6"><%= location.address %></p>
+      </div>
+    </div>
 
-  <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(#{location.longitude},#{location.latitude})/#{location.longitude},#{location.latitude},13,0/300x200?access_token=#{ENV['MAPBOX_ACCESS_TOKEN']}" %>
-  <p>
-    <strong>Name:</strong>
-    <%= location.name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= location.address %>
-  </p>
-
-  <p>
-    <strong>Latitude:</strong>
-    <%= location.latitude %>
-  </p>
-
-  <p>
-    <strong>Longitude:</strong>
-    <%= location.longitude %>
-  </p>
-
+    <div class="content is-size-7 has-text-success">
+      <%= number_with_precision location.latitude, precision: 4 %> | <%= number_with_precision location.longitude, precision: 4 %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,5 @@
+<h1 class="title">Restricting Map Bounds</h1>
+<h4 class="subtitle">This example creates a map that starts in Auckland, New Zealand. The map is restricted to New Zealand. The user can pan away from Auckland and explore other New Zealand cities, but the user cannot pan or zoom to beyond the constraints set on the map.</h4>
+<h4 class="subtitle">Try panning north, or zooming out, to see what happens when a user tries to move beyond these boundaries.</h4>
+<div id="map" data-controller="geolocation" data-geolocation-target="bounds"></div>
+<%= link_to "Back", locations_path, class: "button is-primary mt-4" %>

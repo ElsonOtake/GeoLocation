@@ -5,22 +5,46 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-name = "Hôtel Martinez - The Unbound Collection by Hvatt"
-address = "73 Bd de la Croisette, 06400 Cannes"
+name = "Ibirapuera Park"
+address = "Avenida Pedro Álvares Cabral, Moema, São Paulo, Brazil"
 Location.create(name:, address:)
 
-name = "Exclusive Hotel Belle Plage"
-address = "2 Rue Brougham, 06400 Cannes"
+name = "São Paulo Museum of Art"
+address = "Avenida Paulista, 1578, Cerqueira César, Jardim Paulista, São Paulo, Brazil"
 Location.create(name:, address:)
 
-name = "Best Western Premier Le Patio des Artistes - Cannes"
-address = "6 Rue de Bône, 06400 Cannes"
+name = "Altino Arantes Building"
+address = "Rua João Brícola, 24, Glicério, Sé, São Paulo, Brazil"
 Location.create(name:, address:)
 
-name = "Le Negresco"
-address = "37 Prom. des Anglais, 06000 Nice"
+name = "Municipal Theatre of São Paulo"
+address = "Praça Ramos de Azevedo, s/n, República, São Paulo, Brazil"
 Location.create(name:, address:)
 
-name = "Caesars Palace"
-address = "3570 S Las Vegas Blvd, Las Vegas, NV 89109, United States"
+name = "Municipal Market of São Paulo"
+address = "Rua da Cantareira, 306, Glicério, Sé, São Paulo, Brazil"
+Location.create(name:, address:)
+
+name = "Estádio Municipal Paulo Machado de Carvalho"
+address = "Praça Charles Miller, s/n, Pacaembu, Consolação, São Paulo, 01234-010, Brazil"
+Location.create(name:, address:)
+
+name = "Pateo do collegio"
+address = "Pateo do Collegio, 2, Glicério, Sé, São Paulo, Brazil"
+Location.create(name:, address:)
+
+name = "São Paulo Cathedral"
+address = "Praça da Sé, s/n, Glicério, Sé, São Paulo, Brazil"
+Location.create(name:, address:)
+
+name = "Christ The Redeemer"
+address = "Estrada do Corcovado, Santa Teresa, Rio de Janeiro, Brazil"
+Location.create(name:, address:)
+
+name = "Guarujá beach"
+address = "Guarujá, Santos, Baixada Santista, São Paulo, Brazil"
+Location.create(name:, address:)
+
+name = "Santos Aquarium"
+address = "Avenida Bartholomeu de Gusmão, s/n, Ponta da Praia, Santos, São Paulo, Brazil"
 Location.create(name:, address:)

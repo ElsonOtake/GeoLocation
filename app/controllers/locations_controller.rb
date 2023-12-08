@@ -10,17 +10,9 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1 or /locations/1.json
-  def show
-  end
-
   # GET /locations/new
   def new
     @location = Location.new
-  end
-
-  # GET /locations/1/edit
-  def edit
   end
 
   # POST /locations or /locations.json
@@ -35,29 +27,6 @@ class LocationsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /locations/1 or /locations/1.json
-  def update
-    respond_to do |format|
-      if @location.update(location_params)
-        format.html { redirect_to location_url(@location), notice: "Location was successfully updated." }
-        format.json { render :show, status: :ok, location: @location }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /locations/1 or /locations/1.json
-  def destroy
-    @location.destroy
-
-    respond_to do |format|
-      format.html { redirect_to locations_url, notice: "Location was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

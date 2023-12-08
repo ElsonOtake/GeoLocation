@@ -1,0 +1,49 @@
+<nav class="navbar px-6" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= image_tag "EAO.png", class: "navbar-item", size: "112x28" %>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarGeoLocation">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarGeoLocation" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Mapbox", locations_path, class: "navbar-item" %>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Google maps
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "Find Location Coordinates", coordinates_path, class: "navbar-item" %>
+          <%= link_to "Simple map", simple_map_path, class: "navbar-item" %>
+          <%= link_to "Showing Pixel and Tile Coordinates", pixel_tile_path, class: "navbar-item" %>
+          <%= link_to "Geolocation", geolocation_path, class: "navbar-item" %>
+          <%= link_to "Localizing the Map", localizing_path, class: "navbar-item" %>
+          <%= link_to "Right-to-Left Languages", right_to_left_path, class: "navbar-item" %>
+          <%= link_to "Custom Map Projections", custom_path, class: "navbar-item" %>
+          <%= link_to "Lat/Lng Object Literal", literal_path, class: "navbar-item" %>
+          <hr class="navbar-divider">
+          <%= link_to "Simple Click Events", simple_click_path, class: "navbar-item" %>
+          <%= link_to "Getting Properties With Event Handlers", properties_path, class: "navbar-item" %>
+          <%= link_to "Getting Lat/Lng from a Click Event", lat_lng_path, class: "navbar-item" %>
+          <hr class="navbar-divider">
+          <%= link_to "Restricting Map Bounds", bounds_path, class: "navbar-item" %>
+          <hr class="navbar-divider">
+          <%= link_to "Simple HTML Marker", html_marker_path, class: "navbar-item" %>
+          <%= link_to "Advanced Marker", advanced_marker_path, class: "navbar-item" %>
+          <%= link_to "Customize Advanced Marker", customize_advanced_marker_path, class: "navbar-item" %>
+          <%= link_to "Interactive Marker", interactive_marker_path, class: "navbar-item" %>
+          <%= link_to "Centered Marker", centered_marker_path, class: "navbar-item" %>
+          <%= link_to "Cluster Markers", cluster_markers_path, class: "navbar-item" %>
+          <%= link_to "Circles", circles_path, class: "navbar-item" %>
+          <%= link_to "Info Windows", info_windows_path, class: "navbar-item" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
