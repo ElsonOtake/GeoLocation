@@ -249,7 +249,6 @@ export default class extends Controller {
   static targets = [ "coordinates", "simpleMap", "pixelTile", "geolocation", "localizing", "rightToLeft", "custom", "literal",
     "simpleClick", "properties", "latLng", "bounds", "htmlMarker", "advancedMarker", "centeredMarker", "clusterMarkers",
     "circles", "infoWindows", "customizeAdvanced_marker", "interactiveMarker" ]
-  static values = { page: String }
 
   coordinatesTargetConnected = () => {
     this.coordinates();
